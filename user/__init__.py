@@ -1,8 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import psycopg2, dotenv, os
+from flask_restx import Api
 
 app = Flask(__name__)
+api = Api(app)
 
 dotenv.load_dotenv()
 db_url = os.getenv('DATABASE_URL')
@@ -14,4 +16,4 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-from user.routes import api
+from user.routes import *
