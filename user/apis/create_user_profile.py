@@ -1,4 +1,4 @@
-from flask_restx import Resource
+from flask_restx import Resource, fields
 from sqlalchemy import func
 from user import db
 from flask import request
@@ -6,10 +6,20 @@ from flask import request
 from user.models.student import StudentModel
 from user import api
 
+resource_fields = api.model('Student', {
+    'username': fields.String,
+    'first_name': fields.String,
+    'last_name': fields.String,
+    'primary_email': fields.String,
+    'gender': fields.String,
+    'age': fields.Integer,
+})
+
+
 # create user profiles
 class CreateUserProfiles(Resource):
-    @api.doc(responses={201: 'Created', 400: 'Bad Request', 500: 'Internal Server Error'})
-    @api.expect(StudentModel.get_model_create(api))
+    # @api.doc(responses={201: 'Created', 400: 'Bad Request', 500: 'Internal Server Error'})
+    @api.expect(resource_fields)
     def post(self):
         max_id = db.session.query(func.max(StudentModel.id)).scalar()
         if (max_id == 'None'):

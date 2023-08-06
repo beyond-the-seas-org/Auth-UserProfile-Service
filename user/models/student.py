@@ -68,40 +68,4 @@ class StudentModel(db.Model):
             'toefl_score': self.toefl_score,
             'ielts_score': self.ielts_score
         }
-    
-    def get_model_create(api):
-        return api.model('StudentModel', {
-            'username': fields.String,
-            'first_name': fields.String,
-            'last_name': fields.String,
-            'primary_email': fields.String,
-            'gender': fields.String,
-            'age': fields.Integer,
-        })
-    
-    def get_model_update(api):
-        return api.model('StudentModel', {
-            'username': fields.String,
-            'first_name': fields.String,
-            'last_name': fields.String,
-            'primary_email': fields.String,
-            'gender': fields.String,
-            'age': fields.Integer,
-            'secondary_email': fields.String,
-            'bsc_year_of_passing': fields.Integer,
-            'ms_year_of_passing': fields.Integer,
-            'bsc_cgpa': fields.Float,
-            'ms_cgpa': fields.Float,
-            'bsc_university': fields.String,
-            'ms_university': fields.String,
-            'github_link': fields.String,
-            'linkedin_link': fields.String,
-            'website_link': fields.String,
-            'current_address': fields.String,
-            'gre_verbal_quant_score': fields.Integer,
-            'gre_awa_score': fields.Float,
-            'toefl_score': fields.Integer,
-            'ielts_score': fields.Float
-            })
-    
-    
+        
