@@ -6,6 +6,8 @@ from flask_migrate import Migrate
 app = Flask(__name__)
 api = Api(app)
 
+app.config.from_object('app.config.DevelopmentConfig')
+
 @api.route('/hello')
 class HelloWorld(Resource):
     def get(self):
