@@ -2,14 +2,17 @@ from user import db
 from flask_restx import fields, Model
 from user import api
 
-signup_model = api.model('signup_model',{'username': fields.String(required=True),
+login_model = api.model('login_model', {
+    'username': fields.String(required=True),
+    'password_hash': fields.String(required=True)
+})
+
+signup_model = api.clone('signup_model', login_model,{
     'first_name': fields.String(required=True),
     'last_name': fields.String(required=True),
     'primary_email': fields.String(required=True),
-    'secondary_email': fields.String,
     'gender': fields.String(required=True),
-    'age': fields.Integer(required=True),
-    'password_hash': fields.String(required=True),
+    'age': fields.Integer(required=True)
 })
 
 update_model = api.clone('update_model', signup_model, {

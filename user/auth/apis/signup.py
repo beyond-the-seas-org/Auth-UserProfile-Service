@@ -14,7 +14,6 @@ auth = Namespace('api/auth')
 class SignUp(Resource):
     @auth.doc(responses={201: 'Created', 400: 'Bad Request', 500: 'Internal Server Error'})
     @auth.expect(signup_model)
-    @auth.marshal_with(signup_model)
     def post(self):
         # parse the request body
         request_body = request.get_json()
