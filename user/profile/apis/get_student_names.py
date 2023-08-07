@@ -28,7 +28,7 @@ class GetStudentNames(Resource):
         #Now we wll join two panda table ...1)a table with one column of student ids 2)a table with columns (student_id,username)
         joined_pd = pd.merge(student_ids_pd, student_names_with_ids_pd, on='student_id', how='inner')
         joined_pd_dicts = joined_pd.to_dict(orient='records') #it converts a panda table to a array of dictionary
-        print(joined_pd_dicts)
+        # print(joined_pd_dicts)
 
         return jsonify(joined_pd_dicts)
 
