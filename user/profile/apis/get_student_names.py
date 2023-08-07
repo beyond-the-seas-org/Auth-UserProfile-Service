@@ -1,15 +1,17 @@
 from flask_restx import Resource
 from flask import request,jsonify
 
-from user.models.student import StudentModel
+from user.profile.models.student import StudentModel
 from user import api
 import requests
 import pandas as pd
 
-#this API will get a post request from "Newsfeed service" to get "student names" corresponding to "student ids"
-class GetStudentNames(Resource):
-    @api.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'})
+from user.profile.apis.user_profile import profile
 
+#this API will get a post request from "Newsfeed service" to get "student names" corresponding to "student ids"
+@profile.route('/get_student_names')
+class GetStudentNames(Resource):
+    @profile.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'})
     def post(self):
         student_ids = request.get_json()
         student_ids_pd=pd.DataFrame(student_ids)        
@@ -26,7 +28,7 @@ class GetStudentNames(Resource):
         #Now we wll join two panda table ...1)a table with one column of student ids 2)a table with columns (student_id,username)
         joined_pd = pd.merge(student_ids_pd, student_names_with_ids_pd, on='student_id', how='inner')
         joined_pd_dicts = joined_pd.to_dict(orient='records') #it converts a panda table to a array of dictionary
-        print(joined_pd_dicts)
+        # print(joined_pd_dicts)
 
         return jsonify(joined_pd_dicts)
 

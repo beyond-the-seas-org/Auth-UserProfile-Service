@@ -33,6 +33,8 @@ from user.profile.apis.user_profile import profile
 from user.auth.apis.signup import auth
 from user.auth.apis.login import auth
 from user.auth.apis.logout import auth
+from user.profile.apis.get_own_posts import profile
+from user.profile.apis.get_student_names import profile
 
 api.add_namespace(profile)
 api.add_namespace(auth)
