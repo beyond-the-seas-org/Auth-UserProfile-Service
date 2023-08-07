@@ -1,15 +1,17 @@
 from flask_restx import Resource
 from flask import request,jsonify
 
-from user.models.student import StudentModel
+from user.profile.models.student import StudentModel
 from user import api
 import requests
 import pandas as pd
 
-#this API will get a post request from "Newsfeed service" to get "student names" corresponding to "student ids"
-class GetStudentNames(Resource):
-    @api.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'})
+from user.profile.apis.user_profile import profile
 
+#this API will get a post request from "Newsfeed service" to get "student names" corresponding to "student ids"
+@profile.route('/get_student_names')
+class GetStudentNames(Resource):
+    @profile.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'})
     def post(self):
         student_ids = request.get_json()
         student_ids_pd=pd.DataFrame(student_ids)        
