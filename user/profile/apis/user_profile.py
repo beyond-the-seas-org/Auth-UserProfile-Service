@@ -1,39 +1,22 @@
-from flask_restx import Resource, fields
+from flask_restx import Resource, fields, Namespace
 from sqlalchemy import func
-from user import db
+from user import db, api
 from flask import request
 
-from user.models.student import StudentModel
-from user import api
+from user.profile.models.student import StudentModel, update_model
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_jwt_extended import jwt_required
 
-resource_fields = api.model('Student', {
-    'username': fields.String,
-    'first_name': fields.String,
-    'last_name': fields.String,
-    'primary_email': fields.String,
-    'secondary_email': fields.String,
-    'gender': fields.String,
-    'age': fields.Integer,
-    'bsc_year_of_passing': fields.Integer,
-    'ms_year_of_passing': fields.Integer,
-    'bsc_cgpa': fields.Float,
-    'ms_cgpa': fields.Float,
-    'bsc_university': fields.String,
-    'ms_university': fields.String,
-    'github_link': fields.String,
-    'linkedin_link': fields.String,
-    'website_link': fields.String,
-    'current_address': fields.String,
-    'gre_verbal_quant_score': fields.Integer,
-    'gre_awa_score': fields.Float,
-    'toefl_score': fields.Integer,
-    'ielts_score': fields.Float
-})
+profile = Namespace('api/profile')
+authorization_header = api.parser()
+authorization_header.add_argument('Authorization', type=str, location='headers', required=True, help='Access token with the Bearer scheme', default='Bearer ')
 
-# update user profiles
+
+@profile.route('/<int:user_id>/update')
 class UpdateUserProfiles(Resource):
-    # @api.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'})
-    @api.expect(resource_fields)
+    @profile.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'})
+    @profile.expect(update_model, authorization_header)
+    @jwt_required()
     def put(self, user_id):
         # parse the request body
         request_body = request.get_json()
@@ -47,7 +30,7 @@ class UpdateUserProfiles(Resource):
             student.primary_email = request_body['primary_email']
             student.gender = request_body['gender']
             student.age = request_body['age']
-
+            student.password_hash = generate_password_hash(request_body['password_hash'])
             student.secondary_email = request_body['secondary_email']
             student.bsc_year_of_passing = request_body['bsc_year_of_passing']
             student.ms_year_of_passing = request_body['ms_year_of_passing']
@@ -69,4 +52,19 @@ class UpdateUserProfiles(Resource):
             return {'message': 'User profile updated successfully.'}, 200
         
         return {'message': 'User profile not found.'}, 404
+    
+
+
+@profile.route('/<int:user_id>')
+class GetUserProfiles(Resource):
+    @profile.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'}, parser=authorization_header)
+    @jwt_required()
+    def get(self, user_id):
+        student = StudentModel.query.filter_by(id=user_id).first()
+        if student:
+            return student.json()
+        return {'message': 'Student not found'}, 404
+
+
+
     
