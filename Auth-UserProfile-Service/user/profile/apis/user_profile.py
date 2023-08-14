@@ -58,6 +58,7 @@ class UpdateUserProfiles(Resource):
 @profile.route('/<int:user_id>')
 class GetUserProfiles(Resource):
     @profile.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'}, parser=authorization_header)
+    @jwt_required()
     def get(self, user_id):
         student = StudentModel.query.filter_by(id=user_id).first()
         if student:
