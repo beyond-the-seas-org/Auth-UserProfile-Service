@@ -12,7 +12,7 @@ from flask_jwt_extended import (
 
 app = Flask(__name__)
 api = Api(app)
-CORS(app,origins = 'http://localhost:8000')
+CORS(app,origins = 'http://localhost:3000')
 
 
 dotenv.load_dotenv()

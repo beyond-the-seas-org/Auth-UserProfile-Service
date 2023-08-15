@@ -1,68 +1,48 @@
-# This file may be used to create an environment using:
-# $ conda create --name <env> --file <this file>
-# platform: linux-64
-_libgcc_mutex=0.1=conda_forge
-_openmp_mutex=4.5=2_gnu
-alembic=1.11.1=pyhd8ed1ab_0
-aniso8601=9.0.1=pyhd3eb1b0_0
-attrs=22.1.0=py311h06a4308_0
-bzip2=1.0.8=h7f98852_4
-ca-certificates=2023.05.30=h06a4308_0
-cffi=1.15.1=py311h5eee18b_3
-click=8.0.4=py311h06a4308_0
-cryptography=41.0.2=py311h22a60cf_0
-flask=2.2.2=py311h06a4308_0
-flask-jwt-extended=4.4.4=py311h06a4308_0
-flask-migrate=4.0.4=pyhd8ed1ab_0
-flask-restful=0.3.9=py311h06a4308_0
-flask-restx=1.0.3=py311h06a4308_0
-flask-script=2.0.6=py_0
-flask-sqlalchemy=3.0.2=py311h06a4308_0
-flask_cors=3.0.10=pyhd3eb1b0_0
-greenlet=2.0.1=py311h6a678d5_0
-importlib-metadata=6.8.0=pyha770c72_0
-importlib_resources=6.0.0=pyhd8ed1ab_1
-itsdangerous=2.0.1=pyhd3eb1b0_0
-jinja2=3.1.2=py311h06a4308_0
-jsonschema=4.17.3=py311h06a4308_0
-keyutils=1.6.1=h166bdaf_0
-krb5=1.21.1=h659d440_0
-ld_impl_linux-64=2.40=h41732ed_0
-libedit=3.1.20191231=he28a2e2_2
-libexpat=2.5.0=hcb278e6_1
-libffi=3.4.2=h7f98852_5
-libgcc-ng=13.1.0=he5830b7_0
-libgomp=13.1.0=he5830b7_0
-libnsl=2.0.0=h7f98852_0
-libpq=15.3=hfc447b1_2
-libsqlite=3.42.0=h2797004_0
-libstdcxx-ng=13.1.0=hfd8a6a1_0
-libuuid=2.38.1=h0b41bf4_0
-libzlib=1.2.13=hd590300_5
-mako=1.2.4=pyhd8ed1ab_0
-markupsafe=2.1.1=py311h5eee18b_0
-ncurses=6.4=hcb278e6_0
-openssl=3.1.1=hd590300_1
-pip=23.2.1=pyhd8ed1ab_0
-psycopg2=2.9.6=py311h68d4568_0
-psycopg2-binary=2.9.6=pyhd8ed1ab_0
-pycparser=2.21=pyhd3eb1b0_0
-pyjwt=2.4.0=py311h06a4308_0
-pyrsistent=0.18.0=py311h5eee18b_0
-python=3.11.4=hab00c5b_0_cpython
-python-dateutil=2.8.2=pyhd3eb1b0_0
-python-dotenv=1.0.0=pyhd8ed1ab_0
-python_abi=3.11=3_cp311
-pytz=2022.7=py311h06a4308_0
-readline=8.2=h8228510_1
-setuptools=68.0.0=pyhd8ed1ab_0
-six=1.16.0=pyhd3eb1b0_1
-sqlalchemy=1.4.39=py311h5eee18b_0
-tk=8.6.12=h27826a3_0
-typing-extensions=4.7.1=hd8ed1ab_0
-typing_extensions=4.7.1=pyha770c72_0
-tzdata=2023c=h71feb2d_0
-werkzeug=2.2.3=py311h06a4308_0
-wheel=0.41.0=pyhd8ed1ab_0
-xz=5.2.6=h166bdaf_0
-zipp=3.16.2=pyhd8ed1ab_0
+alembic @ file:///home/conda/feedstock_root/build_artifacts/alembic_1684377053240/work
+aniso8601 @ file:///tmp/build/80754af9/aniso8601_1614708839015/work
+attrs @ file:///work/ci_py311/attrs_1676822758931/work
+Bottleneck @ file:///work/ci_py311/bottleneck_1676827011612/work
+brotlipy==0.7.0
+certifi @ file:///croot/certifi_1690232220950/work/certifi
+cffi @ file:///work/ci_py311/cffi_1676822533496/work
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+click @ file:///work/ci_py311/click_1676825163161/work
+cryptography @ file:///croot/cryptography_1689373676338/work
+Flask @ file:///work/ci_py311/flask_1676827140363/work
+Flask-Cors @ file:///tmp/build/80754af9/flask_cors_1614875208036/work
+Flask-JWT-Extended @ file:///work/ci_py311/flask-jwt-extended_1676827756937/work
+Flask-Migrate @ file:///home/conda/feedstock_root/build_artifacts/flask-migrate_1675404414747/work
+Flask-RESTful @ file:///work/ci_py311/flask-restful_1676852422576/work
+flask-restx @ file:///work/ci_py311/flask-restx_1676852437413/work
+Flask-Script==2.0.6
+Flask-SQLAlchemy @ file:///work/ci_py311/flask-sqlalchemy_1676827785066/work
+greenlet @ file:///work/ci_py311/greenlet_1676825247229/work
+idna @ file:///work/ci_py311/idna_1676822698822/work
+importlib-metadata @ file:///home/conda/feedstock_root/build_artifacts/importlib-metadata_1688754491823/work
+importlib-resources @ file:///home/conda/feedstock_root/build_artifacts/importlib_resources_1689017639396/work
+itsdangerous @ file:///tmp/build/80754af9/itsdangerous_1621432558163/work
+Jinja2 @ file:///work/ci_py311/jinja2_1676823587943/work
+jsonschema @ file:///croot/jsonschema_1678983421637/work
+Mako @ file:///home/conda/feedstock_root/build_artifacts/mako_1668568582731/work
+MarkupSafe @ file:///work/ci_py311/markupsafe_1676823507015/work
+numexpr @ file:///croot/numexpr_1683221822650/work
+numpy @ file:///croot/numpy_and_numpy_base_1687466208449/work
+pandas==1.5.3
+psycopg2 @ file:///home/conda/feedstock_root/build_artifacts/psycopg2-split_1688999074484/work
+psycopg2-binary @ file:///home/conda/feedstock_root/build_artifacts/psycopg2-split_1688999073688/work/psycopg2-binary
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+PyJWT @ file:///work/ci_py311/pyjwt_1676827385359/work
+pyOpenSSL @ file:///croot/pyopenssl_1690223430423/work
+pyrsistent @ file:///work/ci_py311/pyrsistent_1676823088752/work
+PySocks @ file:///work/ci_py311/pysocks_1676822712504/work
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
+python-decouple @ file:///home/conda/feedstock_root/build_artifacts/python-decouple_1677787101602/work
+python-dotenv @ file:///home/conda/feedstock_root/build_artifacts/python-dotenv_1677227146928/work
+pytz @ file:///work/ci_py311/pytz_1676825004346/work
+requests @ file:///croot/requests_1690400202158/work
+six @ file:///tmp/build/80754af9/six_1644875935023/work
+SQLAlchemy @ file:///work/ci_py311/sqlalchemy_1676827498678/work
+typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1688315532570/work
+urllib3 @ file:///croot/urllib3_1686163155763/work
+Werkzeug @ file:///croot/werkzeug_1679489717957/work
+zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1689374466814/work
