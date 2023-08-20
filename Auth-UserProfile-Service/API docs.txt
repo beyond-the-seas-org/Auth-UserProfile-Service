@@ -1,0 +1,16 @@
+/api/profile/create_dummy_user
+----------------------------------
+
+post req format
+{
+"username":"new user",
+"first_name":"john",
+"last_name" : "Doe",
+"primary_email":"abcd@gmail.com",
+"password_hash" : "5678",
+"bsc_cgpa" : 3.75,
+"github_link" : "johngithub.com",
+"linkedin_link":"johnlinkedin.com",
+"website_link" : "johnlinkedin.com",
+"gre_awa_score":7.5
+}
