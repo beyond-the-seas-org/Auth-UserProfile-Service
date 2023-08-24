@@ -35,6 +35,9 @@ from user.auth.apis.login import auth
 from user.auth.apis.logout import auth
 from user.profile.apis.get_own_posts import profile
 from user.profile.apis.get_student_names import profile
+from user.profile.apis.create_dummy_user import profile
+from user.profile.apis.get_cgpa_and_gre import profile
+
 
 api.add_namespace(profile)
 api.add_namespace(auth)
