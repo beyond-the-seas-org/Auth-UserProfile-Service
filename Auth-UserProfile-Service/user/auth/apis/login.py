@@ -22,7 +22,7 @@ class Login(Resource):
                 # generate the access token
                 access_token = create_access_token(identity=student.id)
                 refresh_token = create_refresh_token(identity=student.id)
-                return {'access_token': access_token, 
+                return {'id': student.id, 'access_token': access_token, 
                         'refresh_token': refresh_token}, 200
             return {'message': 'Incorrect password.'}, 400
         return {'message': 'User profile not found.'}, 404
