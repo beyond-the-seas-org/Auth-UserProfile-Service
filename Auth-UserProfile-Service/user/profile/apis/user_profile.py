@@ -20,6 +20,15 @@ class UpdateUserProfiles(Resource):
     def put(self, user_id):
         # parse the request body
         request_body = request.get_json()
+
+        # list of expected fields in the request body
+        expected_fields = ['username', 'first_name', 'last_name', 'primary_email', 'gender', 'age']
+
+        # check if all expected fields are present and not empty
+        for field in expected_fields:
+            if field not in request_body or not request_body[field]:
+                return {'message': f'Missing or empty field: {field}'}, 400
+
         # check if the user profile exists
         student = StudentModel.query.filter_by(id=user_id).first()
         if student:
@@ -66,6 +75,7 @@ class GetUserProfiles(Resource):
 
     def get(self, user_id):
         student = StudentModel.query.filter_by(id=user_id).first()
+        
         if student:
             return student.json()
         return {'message': 'Student not found'}, 404
