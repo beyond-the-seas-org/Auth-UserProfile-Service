@@ -12,8 +12,16 @@ from user.profile.apis.user_profile import profile
 class GetOwnPosts(Resource):
     @profile.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'})
     def get(self, user_id):
-        response = requests.get(f'http://localhost:5000//api/newsfeed/{user_id}/get_own_posts')
-        if response:
-            return jsonify(response.json())
-        return {'message': 'own posts not found'}, 404
+
+        try:
+
+            response = requests.get(f'http://localhost:5000//api/newsfeed/{user_id}/get_own_posts')
+            if response:
+                return jsonify(response.json())
+            return jsonify({'message': 'own posts not found'})
+        
+        except Exception as e:
+            print({"message":"exception occured in get_own_posts"})
+            print(e)
+            return jsonify({"message":"exception occured in get_own_posts"})
 

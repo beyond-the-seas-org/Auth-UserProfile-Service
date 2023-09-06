@@ -27,7 +27,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Import models
-import models.student,models.project,models.publication,models.field,models.tables
+import models.student,models.shortlist
 
 migrate = Migrate(app, db)
 
