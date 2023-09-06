@@ -34,12 +34,14 @@ from user.auth.apis.signup import auth
 from user.auth.apis.login import auth
 from user.auth.apis.logout import auth
 from user.profile.apis.get_own_posts import profile
-from user.profile.apis.get_student_names import profile
+from user.profile.apis.get_student_names_and_images import profile
 from user.profile.apis.create_dummy_user import profile
 from user.profile.apis.get_cgpa_and_gre import profile
 from user.profile.apis.add_to_shortlist import profile
 from user.profile.apis.remove_from_shortlist import profile
 from user.profile.apis.get_shortlisted_professors import profile
+from user.profile.apis.get_student_info import profile
+
 
 api.add_namespace(profile)
 api.add_namespace(auth)

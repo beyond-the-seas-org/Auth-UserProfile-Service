@@ -40,6 +40,8 @@ class StudentModel(db.Model):
     gre_awa_score = db.Column(db.Float)
     toefl_score = db.Column(db.Integer)
     ielts_score = db.Column(db.Float)
+    profile_picture_link = db.Column(db.String(1000))
+
     
     # create a json method
     def json(self):
@@ -63,5 +65,6 @@ class StudentModel(db.Model):
             'gre_verbal_quant_score': self.gre_verbal_quant_score,
             'gre_awa_score': self.gre_awa_score,
             'toefl_score': self.toefl_score,
-            'ielts_score': self.ielts_score
+            'ielts_score': self.ielts_score,
+            'profile_picture_link': self.profile_picture_link
         }

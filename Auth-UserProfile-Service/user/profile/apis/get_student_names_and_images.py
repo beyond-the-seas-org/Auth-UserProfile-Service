@@ -9,8 +9,8 @@ import pandas as pd
 from user.profile.apis.user_profile import profile
 
 #this API will get a post request from "Newsfeed service" to get "student names" corresponding to "student ids"
-@profile.route('/get_student_names')
-class GetStudentNames(Resource):
+@profile.route('/get_student_names_and_images')
+class GetStudentNamesAndImages(Resource):
     @profile.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'})
     def post(self):
 
@@ -20,11 +20,11 @@ class GetStudentNames(Resource):
             student_ids_pd=pd.DataFrame(student_ids)        
         
             #we got the "student_ids_pd" .now we will build a table of (student_id,student_names) using pandas
-            student_names_with_ids = StudentModel.query.with_entities(StudentModel.id,StudentModel.username).all()
+            student_names_with_ids = StudentModel.query.with_entities(StudentModel.id,StudentModel.username,StudentModel.profile_picture_link).all()
             student_names_with_ids_dicts =[]
 
             for student_name_with_id in student_names_with_ids:
-                student_names_with_ids_dicts.append({"student_id":student_name_with_id.id,"username":student_name_with_id.username})
+                student_names_with_ids_dicts.append({"student_id":student_name_with_id.id,"username":student_name_with_id.username,"profile_picture_link":student_name_with_id.profile_picture_link})
 
             student_names_with_ids_pd = pd.DataFrame(student_names_with_ids_dicts)    
 

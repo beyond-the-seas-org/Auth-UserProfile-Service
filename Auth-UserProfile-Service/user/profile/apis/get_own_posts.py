@@ -1,10 +1,9 @@
 from flask_restx import Resource
 from flask import request,jsonify
-
-from user.profile.models.student import StudentModel
 from user import api
 import requests
 
+from user.profile.models.student import StudentModel
 from user.profile.apis.user_profile import profile
 
 #this API will get a post request from "Newsfeed service" to get student names corresponding to "student ids"
