@@ -13,8 +13,12 @@ class Login(Resource):
     @auth.doc(responses={200: 'OK', 400: 'Bad Request', 500: 'Internal Server Error'})
     @auth.expect(login_model)
     def post(self):
-        # check if the user profile exists
         request_body = request.get_json()
+        # check if request body is complete or not
+        if request_body['username'] == '' or request_body['password_hash'] == '':
+            return {'message': 'Missing fields!'}, 400
+
+        # check if the user profile exists
         student = StudentModel.query.filter_by(username=request_body['username']).first()
         if student:
             # check if the password is correct
