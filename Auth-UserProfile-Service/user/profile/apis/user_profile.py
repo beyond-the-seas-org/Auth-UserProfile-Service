@@ -46,7 +46,7 @@ class UpdateUserProfiles(Resource):
             student.primary_email = request_body['primary_email']
             student.gender = request_body['gender']
             student.age = request_body['age']
-            student.password_hash = generate_password_hash(request_body['password_hash'])
+            # student.password_hash = generate_password_hash(request_body['password_hash'])
             student.secondary_email = request_body['secondary_email']
             
             student.bsc_year_of_passing = request_body['bsc_year_of_passing']
