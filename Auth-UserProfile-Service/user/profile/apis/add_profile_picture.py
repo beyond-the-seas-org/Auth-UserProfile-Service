@@ -3,12 +3,14 @@ from flask_restx import Resource
 from sqlalchemy import func
 from user import db
 from user import api
+from user.profile.apis.user_profile import profile
+
 import boto3
 import datetime
 
 from user.profile.models.student import StudentModel
-#this class is for adding image for new post into database
 
+@profile.route('/add_profile_picture/<int:user_id>')
 class Add_image(Resource):
     @api.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'})
 
@@ -35,7 +37,7 @@ class Add_image(Resource):
             student.profile_picture_link = url
             db.session.commit()
             
-            return jsonify({'url': url})
+            return jsonify({'url': url, 'status': 'ok'})
 
         except Exception as e:
             print({"message":"exception occured in add_profile_picture"})
