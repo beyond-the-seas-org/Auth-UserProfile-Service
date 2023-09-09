@@ -6,11 +6,20 @@ from flask import request,jsonify
 from user.profile.apis.user_profile import profile
 from user.profile.models.shortlist import ShortlistModel
 
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended.exceptions import NoAuthorizationError
+
+@api.errorhandler(NoAuthorizationError)
+def handle_auth_required(e):
+    return {"message": "Authorization token is missing"}, 401
+
+
 
 #this API will add an entry for a student who shorlists a professor
 @profile.route('/add_to_shortlist')
 class AddToShortlist(Resource):
     @profile.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'})
+    @jwt_required()
     def post(self):
 
         try:

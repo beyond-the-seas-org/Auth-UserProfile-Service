@@ -5,11 +5,17 @@ from flask import request
 
 from user.profile.models.student import StudentModel, update_model
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_jwt_extended import jwt_required
 
 profile = Namespace('api/profile')
 authorization_header = api.parser()
 authorization_header.add_argument('Authorization', type=str, location='headers', required=True, help='Access token with the Bearer scheme', default='Bearer ')
+
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended.exceptions import NoAuthorizationError
+
+@api.errorhandler(NoAuthorizationError)
+def handle_auth_required(e):
+    return {"message": "Authorization token is missing"}, 401
 
 
 @profile.route('/<int:user_id>/update')
@@ -40,7 +46,7 @@ class UpdateUserProfiles(Resource):
             student.primary_email = request_body['primary_email']
             student.gender = request_body['gender']
             student.age = request_body['age']
-            student.password_hash = generate_password_hash(request_body['password_hash'])
+            # student.password_hash = generate_password_hash(request_body['password_hash'])
             student.secondary_email = request_body['secondary_email']
             
             student.bsc_year_of_passing = request_body['bsc_year_of_passing']
@@ -72,7 +78,7 @@ class UpdateUserProfiles(Resource):
 @profile.route('/<int:user_id>')
 class GetUserProfiles(Resource):
     @profile.doc(responses={200: 'OK', 404: 'Not Found', 500: 'Internal Server Error'}, parser=authorization_header)
-
+    @jwt_required()
     def get(self, user_id):
         student = StudentModel.query.filter_by(id=user_id).first()
         
