@@ -41,6 +41,8 @@ from user.profile.apis.add_to_shortlist import profile
 from user.profile.apis.remove_from_shortlist import profile
 from user.profile.apis.get_shortlisted_professors import profile
 from user.profile.apis.get_student_info import profile
+from user.profile.apis.get_ieee_publication_info import profile
+from user.profile.apis.add_profile_picture import profile
 
 
 api.add_namespace(profile)
