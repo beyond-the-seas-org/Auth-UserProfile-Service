@@ -28,7 +28,7 @@ def extract_info(text, link):
     for i, line in enumerate(lines):
         if i == 1:
             title = line.strip()
-        elif "Date Added to IEEE Xplore:" in line:
+        elif "Date of Publication:" in line:
             date_of_conference = line.split(":")[1].strip()
         elif "DOI:" in line:
             doi = line.split(":")[1].strip()
@@ -79,6 +79,7 @@ def extract_info(text, link):
     publication_data["abstract"] = abstract
     publication_data["ieee_keywords"] = ieee_keywords
     publication_data["author_keywords"] = author_keywords
+    publication_data["keywords"] = ieee_keywords + author_keywords
 
     return publication_data
 
