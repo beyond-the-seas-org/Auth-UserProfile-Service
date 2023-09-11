@@ -4,6 +4,8 @@ from sqlalchemy import func
 from user import db
 from user import api
 from user.profile.apis.user_profile import profile
+import os
+
 
 import boto3
 import datetime
@@ -21,8 +23,12 @@ class Add_image(Resource):
             student = StudentModel.query.get(user_id)
             image_file = request.files['image_file']
 
-            ACCESS_KEY = 'AKIAZJUKI6FIXTQLUVHD'
-            SECRET_KEY = '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'
+            # load the access keys from the env file using dotenv
+            from dotenv import load_dotenv
+            load_dotenv()
+
+            ACCESS_KEY = os.getenv('AWS_ACCESS_KEY')
+            SECRET_KEY = os.getenv('AWS_SECRET_KEY')
             BUCKET_NAME = 'beyond-the-seas-storage'
 
             s3_client = boto3.client('s3', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
